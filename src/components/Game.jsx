@@ -213,7 +213,6 @@ export default function Game() {
                 variant="contained"
                 color="primary"
                 onClick={handleStartGame}
-                fullWidth
               >
                 Játék indítása
               </Button>
@@ -278,7 +277,6 @@ export default function Game() {
                 color="primary"
                 onClick={playRound}
                 disabled={!player1Choice || !player2Choice}
-                fullWidth
               >
                 Következő kör
               </Button>
