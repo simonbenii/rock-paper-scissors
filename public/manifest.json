@@ -1,0 +1,13 @@
+{
+  "name": "Simon Benedek",
+  "short_name": "Simon Benedek",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "16x16 24x24 32x32 64x64",
+      "type": "icons/x-icon"
+    }
+  ]
+}
