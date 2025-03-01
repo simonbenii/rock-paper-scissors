@@ -16,6 +16,7 @@ import {
   TableHead,
   TableRow,
   TextField,
+  Stack,
 } from "@mui/material";
 import SportsHandballIcon from "@mui/icons-material/SportsHandball";
 import DescriptionIcon from "@mui/icons-material/Description";
@@ -170,7 +171,11 @@ export default function Game() {
 
   return (
     <Container maxWidth="xl">
-      <Typography variant="h3" gutterBottom style={{ textAlign: "center" }}>
+      <Typography
+        variant="h3"
+        gutterBottom
+        sx={{ textAlign: "center", fontWeight: "bold", color: "#3f51b5" }}
+      >
         Kő - Papír - Olló
       </Typography>
       <Box
@@ -185,26 +190,48 @@ export default function Game() {
       >
         {!namesEntered ? (
           <>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h5" gutterBottom color="primary">
               Kérlek, add meg a játékosok neveit:
             </Typography>
             <Grid container spacing={2} justifyContent="center">
               <Grid item xs={12} sm={5}>
                 <TextField
-                  label="Játékos 1 neve"
+                  label="Első játékos neve"
                   variant="outlined"
                   fullWidth
                   value={player1Name}
                   onChange={(e) => setPlayer1Name(e.target.value)}
+                  sx={{
+                    "& .MuiInputLabel-root": { color: "#3f51b5" },
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#3f51b5",
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#3f51b5",
+                      },
+                    },
+                  }}
                 />
               </Grid>
               <Grid item xs={12} sm={5}>
                 <TextField
-                  label="Játékos 2 neve"
+                  label="Második játékos neve"
                   variant="outlined"
                   fullWidth
                   value={player2Name}
                   onChange={(e) => setPlayer2Name(e.target.value)}
+                  sx={{
+                    "& .MuiInputLabel-root": { color: "#3f51b5" },
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderColor: "#3f51b5",
+                      },
+                      "&:hover fieldset": {
+                        borderColor: "#3f51b5",
+                      },
+                    },
+                  }}
                 />
               </Grid>
             </Grid>
@@ -213,6 +240,15 @@ export default function Game() {
                 variant="contained"
                 color="primary"
                 onClick={handleStartGame}
+                sx={{
+                  padding: "10px 20px",
+                  borderRadius: "20px",
+                  fontSize: "16px",
+                  boxShadow: 3,
+                  "&:hover": {
+                    boxShadow: 6,
+                  },
+                }}
               >
                 Játék indítása
               </Button>
@@ -226,65 +262,102 @@ export default function Game() {
 
             <Grid
               container
-              spacing={2}
+              spacing={4}
               justifyContent="center"
               alignItems="center"
             >
               <Grid item xs={12} sm={5}>
-                <Paper elevation={3} sx={{ padding: 2 }}>
-                  <Typography variant="h6">{player1Name}</Typography>
-                  {choices.map((choice) => (
-                    <Button
-                      key={choice.name}
-                      variant={
-                        player1Choice === choice.name ? "contained" : "outlined"
-                      }
-                      onClick={() => setPlayer1Choice(choice.name)}
-                      sx={{ margin: 1 }}
-                      startIcon={choice.icon}
-                      fullWidth
-                    >
-                      {choice.name}
-                    </Button>
-                  ))}
+                <Paper elevation={6} sx={{ padding: 3, borderRadius: "15px" }}>
+                  <Typography variant="h6" sx={{ marginBottom: 2 }}>
+                    {player1Name}
+                  </Typography>
+                  <Stack spacing={2}>
+                    {choices.map((choice) => (
+                      <Button
+                        key={choice.name}
+                        variant={
+                          player1Choice === choice.name
+                            ? "contained"
+                            : "outlined"
+                        }
+                        onClick={() => setPlayer1Choice(choice.name)}
+                        sx={{
+                          margin: 1,
+                          borderRadius: "15px",
+                          padding: "12px 20px",
+                          boxShadow: 3,
+                          "&:hover": {
+                            boxShadow: 6,
+                          },
+                        }}
+                        startIcon={choice.icon}
+                        fullWidth
+                      >
+                        {choice.name}
+                      </Button>
+                    ))}
+                  </Stack>
                 </Paper>
               </Grid>
 
               <Grid item xs={12} sm={5}>
-                <Paper elevation={3} sx={{ padding: 2 }}>
-                  <Typography variant="h6">{player2Name}</Typography>
-                  {choices.map((choice) => (
-                    <Button
-                      key={choice.name}
-                      variant={
-                        player2Choice === choice.name ? "contained" : "outlined"
-                      }
-                      onClick={() => setPlayer2Choice(choice.name)}
-                      sx={{ margin: 1 }}
-                      startIcon={choice.icon}
-                      fullWidth
-                    >
-                      {choice.name}
-                    </Button>
-                  ))}
+                <Paper elevation={6} sx={{ padding: 3, borderRadius: "15px" }}>
+                  <Typography variant="h6" sx={{ marginBottom: 2 }}>
+                    {player2Name}
+                  </Typography>
+                  <Stack spacing={2}>
+                    {choices.map((choice) => (
+                      <Button
+                        key={choice.name}
+                        variant={
+                          player2Choice === choice.name
+                            ? "contained"
+                            : "outlined"
+                        }
+                        onClick={() => setPlayer2Choice(choice.name)}
+                        sx={{
+                          margin: 1,
+                          borderRadius: "15px",
+                          padding: "12px 20px",
+                          boxShadow: 3,
+                          "&:hover": {
+                            boxShadow: 6,
+                          },
+                        }}
+                        startIcon={choice.icon}
+                        fullWidth
+                      >
+                        {choice.name}
+                      </Button>
+                    ))}
+                  </Stack>
                 </Paper>
               </Grid>
             </Grid>
 
-            <Box mt={2}>
+            <Box mt={3}>
               <Button
                 variant="contained"
                 color="primary"
                 onClick={playRound}
                 disabled={!player1Choice || !player2Choice}
+                sx={{
+                  padding: "10px 20px",
+                  borderRadius: "20px",
+                  fontSize: "16px",
+                  boxShadow: 3,
+                  "&:hover": {
+                    boxShadow: 6,
+                  },
+                }}
               >
                 Következő kör
               </Button>
             </Box>
 
             {roundResult && (
-              <Box mt={4} style={{ display: "flex", justifyContent: "center" }}>
-                <Alert severity="info" icon={false}>
+              <Box mt={4} sx={{ display: "flex", justifyContent: "center" }}>
+                <Alert severity="info" icon={false} sx={{ padding: "20px" }}>
                   <Typography variant="h6">
                     {roundResult.round}. kör eredménye:
                   </Typography>
@@ -354,6 +427,15 @@ export default function Game() {
                 color="primary"
                 onClick={resetGame}
                 fullWidth
+                sx={{
+                  padding: "10px 20px",
+                  borderRadius: "20px",
+                  fontSize: "16px",
+                  boxShadow: 3,
+                  "&:hover": {
+                    boxShadow: 6,
+                  },
+                }}
               >
                 Új játék indítása
               </Button>

@@ -22,7 +22,14 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable}`}
+        style={{
+          background: "linear-gradient(135deg, #1abc9c, #ffffff)",
+          minHeight: "100vh",
+          margin: 0,
+        }}
+      >
         {children}
       </body>
     </html>
